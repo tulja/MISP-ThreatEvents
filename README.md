@@ -90,7 +90,7 @@ python3 create_events.py
 ```
 
 * Go to list of events. You can see auto-generated event with the new tag "AutoGen-Tag" created from `create_events.py`. 
-![Alt text](./screenshots/pymisp-event?raw=true "List Events+Tags generated from PyMISP")
+![Alt text](./screenshots/pymisp-event.png?raw=true "List Events+Tags generated from PyMISP")
 
 
 
