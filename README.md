@@ -56,7 +56,7 @@ Password: admin
 ![Alt text](./screenshots/misp-add-event.png?raw=true "Add Threat Event")
 
 * Add new tag  
-![Alt text](./screenshots/misp-add-tag-menu.png.png?raw=true "Add Tag Menu")
+![Alt text](./screenshots/misp-add-tag-menu.png?raw=true "Add Tag Menu")
 ![Alt text](./screenshots/misp-add-tag.png?raw=true "Add Tag")                  
 
 * List available tags
@@ -71,7 +71,7 @@ Password: admin
 
 
 
-###Event Creation using PyMISP
+### Event Creation using PyMISP
 
 
 
