@@ -3,32 +3,38 @@
 
 from pymisp import PyMISP
 from keys import misp_url, misp_key, misp_verifycert
-import argparse
-
-# For python2 & 3 compat, a bit dirty, but it seems to be the least bad one
-try:
-    input = raw_input
-except NameError:
-    pass
 
 
 def init(url, key):
     return PyMISP(url, key, misp_verifycert, 'json', debug=True)
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Create an event on MISP.')
-    parser.add_argument("-d", "--distrib", type=int, help="The distribution setting used for the attributes and for the newly created event, if relevant. [0-3].")
-    parser.add_argument("-i", "--info", help="Used to populate the event info field if no event ID supplied.")
-    parser.add_argument("-a", "--analysis", type=int, help="The analysis level of the newly created event, if applicable. [0-2]")
-    parser.add_argument("-t", "--threat", type=int, help="The threat level ID of the newly created event, if applicable. [1-4]")
-    args = parser.parse_args()
+
+    #### Create an event on MISP
+
+    ##Event consists of distribution, information, analysis and threat
+
+    #The distribution setting used for the attributes and for the newly created event, if relevant. [0-3].
+    distrib = 0
+
+    #Used to populate the event info field if no event ID supplied.
+    info = "This is event generated from PyMISP"
+    
+    #The analysis level of the newly created event, if applicable. [0-2]
+    analysis = 0
+
+    #The threat level ID of the newly created event, if applicable. [1-4]
+    threat = 1
 
     misp = init(misp_url, misp_key)
-    #misp.add_tag("Honeytrap3")
-    event = misp.new_event(args.distrib, args.threat, args.analysis, args.info)
-    #event.addattribute( ’ i p −d s t ’ , ’ 8 . 8 . 8 . 8 ’ )
-    #misp.add_tag("Honeytrap3")
-    tag = "Honeytraps-Type3"
-    misp.new_tag(name=tag, colour='#00ace6', exportable=True)
+    
+    event = misp.new_event(distrib, threat, analysis, info)
+
+    tag = "Sample-Tag"
     misp.add_tag(event, tag, attribute=False)
+
+    new_tag = "AutoGen-Tag"
+    misp.new_tag(name=new_tag, colour='#00ace6', exportable=True)
+    
+    misp.add_tag(event, new_tag, attribute=False)
     print(event)

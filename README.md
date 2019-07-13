@@ -62,7 +62,7 @@ Password: admin
 * List available tags
 ![Alt text](./screenshots/misp-list-tags.png?raw=true "List Tags")
 
-* Link tag to the created event
+* Double-click on event from list of events and link tag to the created event
 ![Alt text](./screenshots/misp-link-tag-event.png?raw=true "Link tag to an event")
 
 * List of events with tag(s)
@@ -73,7 +73,29 @@ Password: admin
 
 ### Event Creation using PyMISP
 
+* To create events using PyMISP we need an API key. Go to Automation page and copy the key (highlighted in the below image). 
+![Alt text](./screenshots/pymisp-key.png?raw=true "API Key for PyMISP")
+
+
+* Update the `misp_key` variable value in keys.py file with the key copied in the above step.
+
+* Install PyMISP
+```
+sudo pip3 install pymisp
+```
+
+* Run the PyMISP code
+```
+python3 create_events.py
+```
+
+* Go to list of events. You can see auto-generated event with the new tag "AutoGen-Tag" created from `create_events.py`. 
+![Alt text](./screenshots/pymisp-event?raw=true "List Events+Tags generated from PyMISP")
+
 
 
 * **References**
+    * https://misp-project.org
     * https://github.com/harvard-itsecurity/docker-misp
+    * https://pymisp.readthedocs.io/
+
